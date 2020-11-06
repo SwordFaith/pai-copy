@@ -1,0 +1,20 @@
+{
+    "name": "pai_copy",
+    "version": "1.0.0",
+    "description": "Use the @azure/storage-blob SDK version 12 to interact with Azure Blob storage and add CLI support",
+    "main": "pai_copy.js",
+    "scripts": {
+        "start": "node pai_copy.js"
+    },
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "@azure/storage-blob": "^12.0.0",
+        "@types/dotenv": "^4.0.3",
+        "@types/tar": "^4.0.3",
+        "dotenv": "^6.0.0",
+        "meow": "^8.0.0",
+        "tar": "^6.0.5",
+        "typescript": "^4.0.5"
+    }
+}
