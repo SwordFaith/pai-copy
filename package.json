@@ -1,20 +1,37 @@
 {
-    "name": "pai_copy",
-    "version": "1.0.0",
-    "description": "Use the @azure/storage-blob SDK version 12 to interact with Azure Blob storage and add CLI support",
-    "main": "pai_copy.js",
-    "scripts": {
-        "start": "node pai_copy.js"
-    },
-    "author": "Your Name",
-    "license": "MIT",
-    "dependencies": {
-        "@azure/storage-blob": "^12.0.0",
-        "@types/dotenv": "^4.0.3",
-        "@types/tar": "^4.0.3",
-        "dotenv": "^6.0.0",
-        "meow": "^8.0.0",
-        "tar": "^6.0.5",
-        "typescript": "^4.0.5"
-    }
+  "name": "pai_copy",
+  "version": "0.1.0",
+  "description": "Use the @azure/storage-blob SDK version 12 to interact with Azure Blob storage and add CLI support",
+  "main": "./src/pai_copy.js",
+  "bin": {
+    "pai_copy": "./src/pai_copy.js"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js .",
+    "start": "node ./src/pai_copy.js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@azure/storage-blob": "^12.0.0",
+    "@types/dotenv": "^4.0.3",
+    "@types/tar": "^4.0.3",
+    "dotenv": "^6.0.0",
+    "meow": "^8.0.0",
+    "tar": "^6.0.5",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "1.18.2"
+  }
 }
