@@ -7,6 +7,7 @@
     "pai_copy": "./src/pai_copy.js"
   },
   "scripts": {
+    "lint": "eslint --ext .js .",
     "start": "node ./src/pai_copy.js"
   },
   "publishConfig": {
@@ -21,5 +22,16 @@
     "meow": "^8.0.0",
     "tar": "^6.0.5",
     "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "1.18.2"
   }
 }
