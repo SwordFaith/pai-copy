@@ -1,6 +1,6 @@
 {
-  "name": "pai_copy",
-  "version": "0.1.0",
+  "name": "@swordfaith/pai_copy",
+  "version": "0.1.2",
   "description": "Use the @azure/storage-blob SDK version 12 to interact with Azure Blob storage and add CLI support",
   "main": "./src/pai_copy.js",
   "bin": {
@@ -8,10 +8,20 @@
   },
   "scripts": {
     "lint": "eslint --ext .js .",
-    "start": "node ./src/pai_copy.js"
+    "start": "node ./src/pai_copy.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "swordfaith",
+  "homepage": "https://github.com/SwordFaith/pai-copy#readme",
+  "bugs": {
+    "url": "https://github.com/SwordFaith/pai-copy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SwordFaith/pai-copy.git"
   },
   "license": "MIT",
   "dependencies": {
