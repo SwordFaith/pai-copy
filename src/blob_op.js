@@ -30,6 +30,9 @@ async function uploadFileToContainer(
   const stat = await promises.lstat(filePath);
   var newFilePath = filePath;
   if (!stat.isFile()) {
+    if (filePath.endsWith('/')) {
+      newFilePath = newFilePath.slice(0, -1);
+    }
     newFilePath = newFilePath + '.tgz';
     await tar.c(
       {
@@ -40,8 +43,7 @@ async function uploadFileToContainer(
     );
     console.log(`${newFilePath} has been created`);
   }
-  // console.log("entered unexpected branch")
-  // TODO: add logic upload blob
+  // Upload blob logic
   const processedBlockBlobFolder = blockBlobFolder.endsWith('/')
     ? blockBlobFolder
     : blockBlobFolder + '/';
