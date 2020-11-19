@@ -9,7 +9,6 @@ const blobOp = require('./blob_op');
 const dotenv = require('dotenv');
 
 dotenv.config();
-console.log(process.env.STORAGE_CONNECTION_STRING);
 
 const cli = meow(
   `
@@ -30,9 +29,7 @@ const cli = meow(
   },
 );
 
-console.log(`${cli.input}`);
-
-async function main(argv) {
+async function main(argv, flags) {
   if (argv.length !== 4) {
     throw Error('Invalid number of arguments, please check usage by --help');
   }
@@ -42,7 +39,6 @@ async function main(argv) {
       // connect to container
       const containerName = argv[2];
       const connectionString = process.env.STORAGE_CONNECTION_STRING || '';
-      console.log(connectionString);
       const containerClient = await blobOp.connectToContainer(
         connectionString,
         containerName,
@@ -51,7 +47,12 @@ async function main(argv) {
       // upload file
       const filePath = argv[1];
       const blobFolder = argv[3];
-      await blobOp.uploadFileToContainer(filePath, blobFolder, containerClient);
+      const fileURL = await blobOp.uploadFileToContainer(
+        filePath,
+        blobFolder,
+        containerClient,
+      );
+      console.log('Upload file url: ', fileURL);
       break;
     }
     default:
@@ -59,6 +60,6 @@ async function main(argv) {
   }
 }
 
-main(cli.input)
-  .then(() => console.log('Done'))
+main(cli.input, cli.flags)
+  .then(() => console.log('Upload successfully'))
   .catch((err) => console.log(err.message));
