@@ -8,11 +8,7 @@ async function connectToContainer(connectionString, containerName) {
     connectionString,
   );
   const containerClient = blobServiceClient.getContainerClient(containerName);
-  const createContainerResponse = await containerClient.createIfNotExists();
-  console.log(
-    `Load container ${containerName} successfully`,
-    createContainerResponse.requestId,
-  );
+  await containerClient.createIfNotExists();
   return containerClient;
 }
 
@@ -41,7 +37,6 @@ async function uploadFileToContainer(
       },
       [filePath],
     );
-    console.log(`${newFilePath} has been created`);
   }
   // Upload blob logic
   const processedBlockBlobFolder = blockBlobFolder.endsWith('/')
@@ -49,11 +44,8 @@ async function uploadFileToContainer(
     : blockBlobFolder + '/';
   const blockBlobPath = processedBlockBlobFolder + newFilePath.split('/').pop();
   const blockBlobClient = containerClient.getBlockBlobClient(blockBlobPath);
-  const uploadBlobResponse = await blockBlobClient.uploadFile(newFilePath);
-  console.log(
-    `Upload block blob ${blockBlobPath} successfully`,
-    uploadBlobResponse.requestId,
-  );
+  await blockBlobClient.uploadFile(newFilePath);
+  return blockBlobClient.url;
 }
 
 module.exports = { connectToContainer, uploadFileToContainer };
